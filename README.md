@@ -19,13 +19,31 @@ Permeability of jammed particles | $k^*$
 Evaporation flux density | $\mathcal{J}^*$
 Solutal diffusion coefficient | $D^*$
 
-The dimensionless qunatities to be specified in the code are:
+The dimensionless qunatities to be specified in the code, which may be passed as command line arguments, are:
 
-Dimensionless parameter | Symbol | Formula
-------------- | ------------- | -------------
-Pecl&#233;t number | $\mathrm{Pe}$ |  $L^* \mathcal{J}^* /(\rho^* \epsilon D^*)$
-Scaled capillary number | $\widetilde{\mathrm{Ca}}$ | $\mu^* \mathcal{J}^* / (\rho^* \sigma^* \epsilon^4)$
-Scaled inverse pore size | $\nu$ | $\epsilon L^* / \sqrt{k^* \mu^*}$
+Dimensionless parameter | Symbol | Formula | Command line argument
+------------- | ------------- | ------------- | -------------
+Pecl&#233;t number | $\mathrm{Pe}$ |  $L^* \mathcal{J}^* /(\rho^* \epsilon D^*)$ | ```--peclet```
+Scaled capillary number | $\widetilde{\mathrm{Ca}}$ | $\mu^* \mathcal{J}^* / (\rho^* \sigma^* \epsilon^4)$ | ```--capillary```
+Scaled inverse pore size | $\nu$ | $\epsilon L^* / \sqrt{k^* \mu^*}$ | ```--nu```
+Initial solute volume fraction | $\phi_0$ | - | ```--phi_initial```
 
-where $\epsilon = (2/\pi)V_0/L^3$ is the drop's aspect ratio.
+where $\epsilon = (2/\pi)V_0^*/{L^*}^3$ is the drop's aspect ratio. For the elliptical drop driver code, the user must also specify:
 
+Parameter  | Command line argument
+------------- | -------------
+Major axis length, $a$ | ```--major_axis```
+Minor axis length, $b$ | ```--minor_axis```
+Evaporation mode | ```--evaporation_flag```
+Theoretical "dry-out" time, $t_f$ | ```--t_f```
+Initial drop apex height | ```--initial_height```
+
+The evaporation mode may be kinetic of diffusive, and can be specified via ```--evaporation_flag 0``` and ```--evaporation_flag 1``` respectively.
+
+For computationally intensive runs, the simulation may be terminated and restarted at a later date via the command line flag ```--restart 1```. This reads in data from the file ```restart.dat``` which has been created during the previous run.
+
+## Installation
+
+The code has been written for and successfully compiled with [version 2.0.0](https://github.com/oomph-lib/oomph-lib/releases/tag/v2.0.0). 
+
+## Output
