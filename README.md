@@ -44,6 +44,10 @@ For computationally intensive runs, the simulation may be terminated and restart
 
 ## Installation
 
-The code has been written for and successfully compiled with [version 2.0.0](https://github.com/oomph-lib/oomph-lib/releases/tag/v2.0.0). 
+The code has been written for and successfully compiled with [version 2.0.0](https://github.com/oomph-lib/oomph-lib/releases/tag/v2.0.0) of oomph-lib. The directories for the elements and driver codes mimic the directory structure of oomph-lib. Once these files have been placed in the relevant locations, the user may run ```./autogen.sh``` to generate the makefile for each driver.
 
-## Output
+For 2D simulations we recommend using the [mumps](https://mumps-solver.org/index.php) linear solver rather than oomph-lib's default, SuperLU.
+
+## Example scripts and output
+
+Example bash scripts have been provided for drops with an elliptical and triangular contact line. For the former, the fields $(h,p,\phi)$ are outputted along the major and minor axis at every time step. At a given time increment (0.025 in the code), a full output of all fields $(x,y,h,p,\phi,u,v)$ is done on both the computational mesh and a fine uniform mesh for aid with post-processing. At timestep ```i``` these are outputted to ```full_solni.dat``` and ```full_soln_uniformi.dat``` respectively.
