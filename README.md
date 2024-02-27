@@ -1,12 +1,14 @@
 # Drying-droplets
 
+<img src="https://github.com/NCJCoombs/Drying-droplets/blob/main/birds_eye_elliptical_drops.png" width="800">
+
 ## Problem description
 
 This code simulates the evaporation of sessile particle laden droplets using a continuum model which is solved via the finite element method.
 
 The user must first have an installation of the finite element library [oomph-lib](https://oomph-lib.github.io/oomph-lib/doc/html/).
 
-Though the driver codes supplied are specific to droplets with elliptical and triangular contact lines, modifications for more general geometries can be easily made. The dimensional physical parameters for the problem, denoted by an asterisk, are:
+Though the driver codes supplied are specific to droplets with elliptical and triangular contact lines, modifications for more general geometries can be easily made. The governing equations may be solved on both structured and unstructured meshes (though structured meshes are recommended for efficiency). The dimensional physical parameters for the problem, denoted by an asterisk, are:
 
 Parameter  | Symbol
 ------------- | -------------
@@ -28,7 +30,7 @@ Scaled capillary number | $\widetilde{\mathrm{Ca}}$ | $\mu^* \mathcal{J}^* / (\r
 Scaled inverse pore size | $\nu$ | $\epsilon L^* / \sqrt{k^* \mu^*}$ | ```--nu```
 Initial solute volume fraction | $\phi_0$ | - | ```--phi_initial```
 
-where $\epsilon = (2/\pi)V_0^*/{L^*}^3$ is the drop's aspect ratio. For the elliptical drop driver code, the user must also specify:
+where $\epsilon = (2/\pi)V_0^* / {L^*}^3$ is the drop's aspect ratio. For the elliptical drop driver code, the user must also specify:
 
 Parameter  | Command line argument
 ------------- | -------------
@@ -50,4 +52,6 @@ For 2D simulations we recommend using the [mumps](https://mumps-solver.org/index
 
 ## Example scripts and output
 
-Example bash scripts have been provided for drops with an elliptical and triangular contact line. For the former, the fields $(h,p,\phi)$ are outputted along the major and minor axis at every time step. At a given time increment (0.025 in the code), a full output of all fields $(x,y,h,p,\phi,u,v)$ is done on both the computational mesh and a fine uniform mesh for aid with post-processing. At timestep ```i``` these are outputted to ```full_solni.dat``` and ```full_soln_uniformi.dat``` respectively.
+Example bash scripts have been provided for drops with an elliptical and triangular contact line. For the former, the fields $(h,p,\phi)$ are outputted along the major and minor axis at every time step.
+
+At a given time increment (0.025 in the code), a full output of all fields $(x,y,h,p,\phi,u,v)$ is done on both the computational mesh and a fine uniform mesh for aid with post-processing. At timestep ```i``` these are outputted to ```full_solni.dat``` and ```full_soln_uniformi.dat``` respectively. The computational timesteps and simulation parameters are outputted to ```time.dat``` and ```parameters.dat``` respectively. for compatibility with post-processing software, the structure of the output may be altered by modifying the ```output``` function in ```thin_film_brinkman_elements.cc```.
