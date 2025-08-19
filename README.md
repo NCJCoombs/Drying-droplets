@@ -1,4 +1,5 @@
 # Drying-droplets
+https://journals.aps.org/pre/abstract/10.1103/PhysRevE.110.064607
 
 <img src="https://github.com/NCJCoombs/Drying-droplets/blob/main/birds_eye_elliptical_drops.png" width="800">
 
