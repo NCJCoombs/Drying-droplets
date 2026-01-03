@@ -64,11 +64,9 @@ The code has been written for and successfully compiled with [version 2.0.0](htt
 
 For 2D simulations we recommend using the [mumps](https://mumps-solver.org/index.php) linear solver rather than oomph-lib's default, SuperLU.
 
-## Example scripts and output
+## Output and example run
 
-Example bash scripts have been provided for drops with an elliptical and triangular contact line. For the former, the fields $(h,p,\phi)$ are outputted along the major and minor axis at every time step.
-
-At a given time increment (0.025 in the code), a full output of all fields $(x,y,h,p,\phi,u,v)$ is done on both the computational mesh and a fine uniform mesh for aid with post-processing. At timestep ```i``` these are outputted to ```full_solni.dat``` and ```full_soln_uniformi.dat``` respectively. The computational timesteps and simulation parameters are outputted to ```time.dat``` and ```parameters.dat``` respectively. for compatibility with post-processing software, the structure of the output may be altered by modifying the ```output``` function in ```thin_film_brinkman_elements.cc```.
+At a given time increment (0.025 in the code), a full output of all fields $(x,y,h,p,\phi,u,v)$ is done. For the 2D driver codes, this is done on both the computational mesh and a fine uniform mesh for aid with post-processing. At timestep ```i``` these are outputted to ```full_solni.dat``` and ```full_soln_uniformi.dat``` respectively. The computational timesteps and simulation parameters are outputted to ```time.dat``` and ```parameters.dat``` respectively. for compatibility with post-processing software, the structure of the output may be altered by modifying the ```output``` function in ```thin_film_brinkman_elements.cc```.
 
 As an example run, consider the following:
 
